@@ -25,10 +25,10 @@ app.get('/api/hello', function (req, res) {
 });
 
 app.get('/api/whoami', (req, res) =>{
-  let ipaddress = requestIP.getClientIp(req);
+  let ipaddress = req.socket.remoteAddress
   let language = req.headers['accept-language'];
-  let userAgent = req.headers['user-agent']
-  result = {ipaddress, language, userAgent}
+  let software = req.headers['user-agent']
+  result = {ipaddress, language, software}
   
   res.json(result)
 
